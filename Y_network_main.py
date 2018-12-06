@@ -52,10 +52,10 @@ y = right_inputs
 #4 layers 
 for i in range(4):
 	y = Conv2D(filters=filters,
-			kernel_size = kernel_size,
-			padding = 'same',
-			activation = 'relu',
-			dilation_rate=3)(y)
+		kernel_size = kernel_size,
+		padding = 'same',
+		activation = 'relu',
+		dilation_rate=3)(y)
 	y = Dropout(dropout)(y)
 	y= MaxPooling2D()(y)
 	filters *=2
@@ -72,7 +72,7 @@ outputs = Dense(num_labels,activation='softmax')(y)
 model = Model([left_inputs,right_inputs],outputs)
 
 #verify the model
-# plot_model(model,to_file = 'cnn-y-network.png',show_shapes = True)
+plot_model(model,to_file = 'cnn-y-network.png',show_shapes = True)
 model.summary()
 
 #classifier loss, Adam Optimizer, classifier accuracy
